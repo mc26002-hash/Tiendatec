@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.Specification" Version="9.3.1" />
+    <PackageReference Include="Mapster" Version="10.0.7" />
+    <PackageReference Include="MediatR" Version="14.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JAMCWEOG.DataAccess\JAMCWEOG.DataAccess.csproj" />
     <ProjectReference Include="..\JAMCWEOG.Entities\JAMCWEOG.Entities.csproj" />
   </ItemGroup>
