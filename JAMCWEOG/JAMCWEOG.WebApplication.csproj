@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JAMCWEOG.BusinessLogic\JAMCWEOG.BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JAMCWEOG.Entities\JAMCWEOG.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
