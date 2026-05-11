@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using JAMCWEOG.Entities.Entities;
 
-namespace JAMCWEOG.DAL.Context
+namespace JAMCWEOG.DataAccess.Context
 {
     public class ApplicationDbContext : DbContext
     {
