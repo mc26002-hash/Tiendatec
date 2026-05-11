@@ -1,3 +1,5 @@
+using JAMCWEOG.DataAccess.Repositories;
+using JAMCWEOG.BusinessLogic.Services;
 using JAMCWEOG.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +9,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<RoleRepository>();
+builder.Services.AddScoped<RoleService>();
 builder.Services.AddControllersWithViews();
 
 // Add services to the container.
