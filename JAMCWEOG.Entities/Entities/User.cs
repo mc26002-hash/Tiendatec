@@ -10,10 +10,9 @@ namespace JAMCWEOG.Entities.Entities
 
         public int RoleId { get; set; }
 
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
 
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; } = string.Empty;
 
-        public Role Role { get; set; }
     }
 }

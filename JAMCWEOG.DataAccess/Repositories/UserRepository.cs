@@ -16,17 +16,14 @@ namespace JAMCWEOG.DataAccess.Repositories
         // LISTAR
         public async Task<List<User>> GetAllAsync()
         {
-            return await _context.Users
-                .Include(u => u.Role)
-                .ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // OBTENER POR ID
         public async Task<User?> GetByIdAsync(int id)
         {
             return await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Id == id);
+    .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         // CREAR
