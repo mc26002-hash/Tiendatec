@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 using JAMCWEOG.BusinessLogic.Services;
 using JAMCWEOG.Entities.Entities;
 
@@ -7,10 +8,14 @@ namespace JAMCWEOG.WebApplication.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductService _productService;
+        private readonly ManufacturerService _manufacturerService;
 
-        public ProductsController(ProductService productService)
+        public ProductsController(
+    ProductService productService,
+    ManufacturerService manufacturerService)
         {
             _productService = productService;
+            _manufacturerService = manufacturerService;
         }
 
         // LISTAR
@@ -21,8 +26,13 @@ namespace JAMCWEOG.WebApplication.Controllers
         }
 
         // GET CREATE
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var manufacturers = await _manufacturerService.GetAllAsync();
+
+            ViewBag.ManufacturerId =
+                new SelectList(manufacturers, "Id", "Name");
+
             return View();
         }
 
@@ -34,8 +44,14 @@ namespace JAMCWEOG.WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 await _productService.AddAsync(product);
+
                 return RedirectToAction(nameof(Index));
             }
+
+            var manufacturers = await _manufacturerService.GetAllAsync();
+
+            ViewBag.ManufacturerId =
+                new SelectList(manufacturers, "Id", "Name", product.ManufacturerId);
 
             return View(product);
         }
@@ -50,6 +66,11 @@ namespace JAMCWEOG.WebApplication.Controllers
                 return NotFound();
             }
 
+            var manufacturers = await _manufacturerService.GetAllAsync();
+
+            ViewBag.ManufacturerId =
+                new SelectList(manufacturers, "Id", "Name", product.ManufacturerId);
+
             return View(product);
         }
 
@@ -63,6 +84,11 @@ namespace JAMCWEOG.WebApplication.Controllers
                 await _productService.UpdateAsync(product);
                 return RedirectToAction(nameof(Index));
             }
+
+            var manufacturers = await _manufacturerService.GetAllAsync();
+
+            ViewBag.ManufacturerId =
+                new SelectList(manufacturers, "Id", "Name", product.ManufacturerId);
 
             return View(product);
         }

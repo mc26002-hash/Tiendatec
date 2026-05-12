@@ -17,7 +17,6 @@ namespace JAMCWEOG.DataAccess.Repositories
         public async Task<List<Product>> GetAllAsync()
         {
             return await _context.Products
-                .Include(p => p.Manufacturer)
                 .ToListAsync();
         }
 
@@ -25,7 +24,6 @@ namespace JAMCWEOG.DataAccess.Repositories
         public async Task<Product?> GetByIdAsync(long id)
         {
             return await _context.Products
-                .Include(p => p.Manufacturer)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
