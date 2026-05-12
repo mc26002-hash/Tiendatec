@@ -10,7 +10,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<RoleRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ManufacturerRepository>();
+builder.Services.AddScoped<ProductRepository>();
+
 builder.Services.AddScoped<RoleService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ManufacturerService>();
+builder.Services.AddScoped<ProductService>();
+
 builder.Services.AddControllersWithViews();
 
 // Add services to the container.
