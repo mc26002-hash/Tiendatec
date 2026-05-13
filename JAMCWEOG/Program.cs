@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using JAMCWEOG.DataAccess.Repositories;
 using JAMCWEOG.BusinessLogic.Services;
 using JAMCWEOG.DataAccess.Context;
@@ -21,6 +22,14 @@ builder.Services.AddScoped<ProductService>();
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/Login";
+    });
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -36,6 +45,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
