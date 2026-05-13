@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using JAMCWEOG.BusinessLogic.Services;
@@ -6,6 +7,7 @@ using JAMCWEOG.Entities.Entities;
 
 namespace JAMCWEOG.WebApplication.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly UserService _userService;

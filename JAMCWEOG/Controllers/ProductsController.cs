@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using JAMCWEOG.BusinessLogic.Services;
 using JAMCWEOG.Entities.Entities;
 
 namespace JAMCWEOG.WebApplication.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly ProductService _productService;
