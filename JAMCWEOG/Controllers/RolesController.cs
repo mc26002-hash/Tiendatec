@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using JAMCWEOG.BusinessLogic.Services;
 using JAMCWEOG.Entities.Entities;
 
 namespace JAMCWEOG.WebApplication.Controllers
 {
+    [Authorize]
     public class RolesController : Controller
     {
         private readonly RoleService _roleService;
